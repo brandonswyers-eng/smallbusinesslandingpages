@@ -158,8 +158,8 @@ function Wordmark({ light = false }: { light?: boolean }) {
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col bg-[oklch(0.97_0.008_250)] text-foreground">
-      <header className="fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-5">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[oklch(0.18_0.045_250_/_0.72)] px-3 pl-5 text-white shadow-[0_10px_40px_-20px_black] backdrop-blur-xl sm:h-16">
+      <header className="fixed inset-x-0 top-0 z-40 px-3 pt-2 sm:px-5">
+        <div className="mx-auto flex h-12 max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[oklch(0.18_0.045_250_/_0.72)] px-3 pl-5 text-white shadow-[0_10px_40px_-20px_black] backdrop-blur-xl sm:h-14">
           <a href="#top" className="min-w-0 truncate">
             <Wordmark light />
           </a>
@@ -182,7 +182,7 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="relative overflow-hidden bg-[oklch(0.18_0.05_255)] pt-28 text-white sm:pt-32">
+        <section className="relative overflow-hidden bg-[oklch(0.18_0.05_255)] pt-20 text-white lg:pt-22">
           <div
             aria-hidden
             className="pointer-events-none absolute -left-24 top-10 size-[28rem] rounded-full bg-[oklch(0.45_0.16_265_/_0.45)] blur-3xl"
@@ -196,22 +196,22 @@ export default function Home() {
             className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-overlay"
           />
 
-          <div className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:pb-24">
+          <div className="relative mx-auto max-w-6xl px-4 pb-8 sm:px-6 lg:pb-10">
             <div className="animate-fade-up max-w-3xl">
-              <p className="mb-6 inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
+              <p className="mb-3 inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
                 Local businesses, still offline
               </p>
-              <h1 className="text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
+              <h1 className="text-[2.15rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-[2.85rem]">
                 Professional landing pages{" "}
                 <span className="text-primary">without the $2,000+</span>{" "}
                 agency price tag.
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
                 We help local businesses get online with a modern, mobile-friendly
                 landing page—without confusing packages, hidden costs or
                 traditional agency overhead.
               </p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <CtaLink>Get My Landing Page</CtaLink>
                 <a
                   href="#pricing"
@@ -220,7 +220,7 @@ export default function Home() {
                   See simple pricing
                 </a>
               </div>
-              <p className="mt-7 max-w-md text-sm leading-relaxed text-white/45">
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/45">
                 Traditional landing-page projects can cost $2,000 or more. This
                 package starts at $399 for design and build.
               </p>
@@ -236,7 +236,7 @@ export default function Home() {
               ].map(([price, label]) => (
                 <div
                   key={label}
-                  className="flex items-baseline justify-between gap-4 px-6 py-6 sm:block sm:px-8"
+                  className="flex items-baseline justify-between gap-4 px-6 py-4 sm:block sm:px-8 sm:py-5"
                 >
                   <p className="font-semibold tracking-tight text-3xl text-primary sm:text-4xl">
                     {price}
