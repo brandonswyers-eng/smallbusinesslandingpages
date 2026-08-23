@@ -191,16 +191,21 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           {status === "sending" ? "Sending…" : "Get My Website"}
         </Button>
         <p className="mt-3 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
-          Submitting this form starts a conversation, not a contract. Additional
+          Submitting this form starts a conversation, not a contract. You agree
+          we may contact you by email or phone about this inquiry. Additional
           work outside the package is quoted and approved before we begin.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
-          We use the information you submit only to respond to this inquiry.
-          See our{" "}
+          We use the information you submit to respond to this inquiry, as
+          described in our{" "}
           <Link className="underline underline-offset-4" href="/privacy">
-            Privacy
+            Privacy Policy
           </Link>{" "}
-          page.
+          and{" "}
+          <Link className="underline underline-offset-4" href="/terms">
+            Terms
+          </Link>
+          .
         </p>
       </div>
     </form>
