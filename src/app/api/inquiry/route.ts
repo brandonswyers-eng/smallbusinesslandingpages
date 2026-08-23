@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { checkInquiryBot, clientIp } from "@/lib/inquiry-guard";
 
 function escapeHtml(value: string) {
   return value
@@ -17,6 +18,23 @@ export async function POST(request: Request) {
     const email = String(body.email ?? "").trim();
     const phone = String(body.phone ?? "").trim();
     const businessType = String(body.businessType ?? "").trim();
+    const website = String(body.website ?? "").trim();
+    const startedAt = Number(body.startedAt);
+
+    const botCheck = checkInquiryBot({
+      website,
+      startedAt,
+      ip: clientIp(request),
+    });
+    if ("silent" in botCheck && botCheck.silent) {
+      return NextResponse.json({ ok: true });
+    }
+    if (!botCheck.ok) {
+      return NextResponse.json(
+        { ok: false, error: botCheck.error },
+        { status: botCheck.status },
+      );
+    }
 
     if (!name || !businessName || !email || !phone || !businessType) {
       return NextResponse.json(

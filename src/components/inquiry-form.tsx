@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,6 +21,7 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
     "idle",
   );
   const [error, setError] = useState("");
+  const startedAt = useRef(Date.now());
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,6 +41,8 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           email: data.get("email"),
           phone: data.get("phone"),
           businessType: data.get("businessType"),
+          website: data.get("website"),
+          startedAt: startedAt.current,
         }),
       });
 
@@ -78,7 +81,10 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           type="button"
           variant="outline"
           className="mt-4"
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+            startedAt.current = Date.now();
+            setStatus("idle");
+          }}
         >
           Send another inquiry
         </Button>
@@ -89,7 +95,11 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
   return (
     <form
       onSubmit={onSubmit}
-      className={compact ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}
+      className={
+        compact
+          ? "relative grid gap-4"
+          : "relative grid gap-4 sm:grid-cols-2"
+      }
     >
       <div className="grid gap-2">
         <Label htmlFor="name">Name</Label>
@@ -135,6 +145,19 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           autoComplete="tel"
           placeholder="(555) 010-1234"
           className="h-11 rounded-xl bg-white"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden"
+      >
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
         />
       </div>
       <div className={compact ? "grid gap-2" : "grid gap-2 sm:col-span-2"}>
