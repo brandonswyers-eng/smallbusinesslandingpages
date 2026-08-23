@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,19 +13,50 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "smallbusinesslandingpages.com — One-page websites from $399";
+const description =
+  "Simple one-page websites for local businesses. Design and build from $399, plus domain launch setup. No confusing packages or ranking guarantees.";
+
 export const metadata: Metadata = {
-  title: "smallbusinesslandingpages.com — Professional pages from $399",
-  description:
-    "We help local businesses get online with a modern, mobile-friendly landing page—without confusing packages, hidden costs or traditional agency overhead. Starting at $399 one-time.",
+  metadataBase: new URL(SITE_URL),
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "smallbusinesslandingpages.com",
+    title,
+    description,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "smallbusinesslandingpages.com — professional websites from $399",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og.png"],
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth overflow-x-clip antialiased`}
     >
-      <body className="flex min-h-full flex-col font-sans">{children}</body>
+      <body className="flex min-h-full flex-col overflow-x-clip font-sans">
+        {children}
+      </body>
     </html>
   );
 }

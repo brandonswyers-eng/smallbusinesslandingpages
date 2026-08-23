@@ -37,6 +37,7 @@ Copy is conservative: no guaranteed leads or rankings, no fabricated testimonial
 - Required fields: name, business name, email, phone, business type
 - Delivery: **Resend** email to `INQUIRY_TO_EMAIL`, Reply-To set to the customer
 - Bot checks: hidden website field, reject instant submits, 5 inquiries per IP per 30 minutes
+- Privacy and Terms pages; founder section gated by `SHOW_FOUNDER_SECTION`
 - Fallback contact copy: `hello@smallbusinesslandingpages.com`
 
 Set `RESEND_API_KEY` and `INQUIRY_TO_EMAIL` in Vercel. Mail is sent **from** `inquiries@send.smallbusinesslandingpages.com` because Resend is verified on the `send.` subdomain, not the root domain. To use `send@smallbusinesslandingpages.com`, add and verify the root domain `smallbusinesslandingpages.com` in Resend as a separate domain.

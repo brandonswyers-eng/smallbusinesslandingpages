@@ -1,9 +1,11 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 const BUSINESS_TYPES = [
   "Mechanic / auto repair",
@@ -21,7 +23,11 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
     "idle",
   );
   const [error, setError] = useState("");
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,7 +64,7 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
     } catch {
       setStatus("error");
       setError(
-        "We couldn’t send your inquiry just now. Please try again, or email hello@smallbusinesslandingpages.com.",
+        `We couldn’t send your inquiry just now. Please try again, or email ${CONTACT_EMAIL}.`,
       );
     }
   }
@@ -72,7 +78,7 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
         <p className="text-lg font-semibold text-[oklch(0.28_0.055_250)]">
           Thanks — we received your inquiry.
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
           We’ll review your details and follow up by email. This is not an
           order confirmation; we’ll discuss scope and next steps before any
           work begins.
@@ -92,6 +98,8 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
     );
   }
 
+  const col = compact ? "grid gap-2" : "grid gap-2 sm:col-span-2";
+
   return (
     <form
       onSubmit={onSubmit}
@@ -101,56 +109,41 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           : "relative grid gap-4 sm:grid-cols-2"
       }
     >
-      <div className="grid gap-2">
-        <Label htmlFor="name">Name</Label>
-        <Input
-          id="name"
-          name="name"
-          required
-          autoComplete="name"
-          placeholder="Alex Rivera"
-          className="h-11 rounded-xl bg-white"
-        />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="businessName">Business name</Label>
-        <Input
-          id="businessName"
-          name="businessName"
-          required
-          autoComplete="organization"
-          placeholder="Rivera Auto Care"
-          className="h-11 rounded-xl bg-white"
-        />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder="you@business.com"
-          className="h-11 rounded-xl bg-white"
-        />
-      </div>
-      <div className="grid gap-2">
-        <Label htmlFor="phone">Phone number</Label>
-        <Input
-          id="phone"
-          name="phone"
-          type="tel"
-          required
-          autoComplete="tel"
-          placeholder="(555) 010-1234"
-          className="h-11 rounded-xl bg-white"
-        />
-      </div>
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden"
-      >
+      <Field
+        id="name"
+        name="name"
+        label="Name"
+        required
+        autoComplete="name"
+        placeholder="Alex Rivera"
+      />
+      <Field
+        id="businessName"
+        name="businessName"
+        label="Business name"
+        required
+        autoComplete="organization"
+        placeholder="Rivera Auto Care"
+      />
+      <Field
+        id="email"
+        name="email"
+        label="Email"
+        type="email"
+        required
+        autoComplete="email"
+        placeholder="you@business.com"
+      />
+      <Field
+        id="phone"
+        name="phone"
+        label="Phone number"
+        type="tel"
+        required
+        autoComplete="tel"
+        placeholder="(555) 010-1234"
+      />
+      <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden">
         <label htmlFor="website">Website</label>
         <input
           id="website"
@@ -160,12 +153,16 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           autoComplete="off"
         />
       </div>
-      <div className={compact ? "grid gap-2" : "grid gap-2 sm:col-span-2"}>
-        <Label htmlFor="businessType">Business type</Label>
+      <div className={col}>
+        <Label htmlFor="businessType">
+          Business type{" "}
+          <span className="text-[oklch(0.45_0.08_250)]">(required)</span>
+        </Label>
         <select
           id="businessType"
           name="businessType"
           required
+          aria-required="true"
           defaultValue=""
           className="h-11 w-full rounded-xl border border-input bg-white px-3 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
@@ -188,15 +185,63 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
         <Button
           type="submit"
           disabled={status === "sending"}
+          aria-busy={status === "sending"}
           className="h-12 w-full rounded-full px-7 text-base font-semibold text-[oklch(0.22_0.05_250)] shadow-[0_12px_30px_-12px_oklch(0.88_0.155_128)] sm:w-auto"
         >
-          {status === "sending" ? "Sending…" : "Get My Landing Page"}
+          {status === "sending" ? "Sending…" : "Get My Website"}
         </Button>
-        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-3 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
           Submitting this form starts a conversation, not a contract. Additional
           work outside the package is quoted and approved before we begin.
         </p>
+        <p className="mt-2 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
+          We use the information you submit only to respond to this inquiry.
+          See our{" "}
+          <Link className="underline underline-offset-4" href="/privacy">
+            Privacy
+          </Link>{" "}
+          page.
+        </p>
       </div>
     </form>
+  );
+}
+
+function Field({
+  id,
+  name,
+  label,
+  type = "text",
+  required,
+  autoComplete,
+  placeholder,
+}: {
+  id: string;
+  name: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  autoComplete?: string;
+  placeholder?: string;
+}) {
+  return (
+    <div className="grid gap-2">
+      <Label htmlFor={id}>
+        {label}{" "}
+        {required ? (
+          <span className="text-[oklch(0.45_0.08_250)]">(required)</span>
+        ) : null}
+      </Label>
+      <Input
+        id={id}
+        name={name}
+        type={type}
+        required={required}
+        aria-required={required}
+        autoComplete={autoComplete}
+        placeholder={placeholder}
+        className="h-11 rounded-xl bg-white"
+      />
+    </div>
   );
 }

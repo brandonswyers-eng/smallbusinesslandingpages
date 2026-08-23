@@ -4,67 +4,71 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { FounderSection } from "@/components/founder-section";
 import { InquiryForm } from "@/components/inquiry-form";
+import { SampleSites } from "@/components/sample-sites";
+import { SiteFooter, SiteHeader } from "@/components/site-frame";
+import { CONTACT_EMAIL } from "@/lib/site";
+import type { Metadata } from "next";
 import {
   Check,
   ClipboardList,
+  Handshake,
   LayoutTemplate,
   MessageSquare,
   Phone,
   Search,
   ShieldCheck,
   Smartphone,
+  Store,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "https://smallbusinesslandingpages.com/" },
+};
 
 const included = [
   {
     title: "Mobile-friendly design",
     description:
-      "A single-page site that reads clearly on phones, tablets, and desktops.",
+      "A one-page website that reads clearly on phones, tablets, and desktops.",
     icon: Smartphone,
-    span: "lg:col-span-2",
   },
   {
     title: "Services and business information",
     description:
       "Your offerings, hours, service area, and the details customers look for first.",
     icon: ClipboardList,
-    span: "",
   },
   {
     title: "Contact form",
     description:
       "A simple way for visitors to reach you without hunting for an email address.",
     icon: MessageSquare,
-    span: "",
   },
   {
     title: "Click-to-call buttons",
     description:
       "Phone numbers that open the dialer on mobile so people can call in one tap.",
     icon: Phone,
-    span: "",
   },
   {
     title: "Basic search-engine setup",
     description:
       "Page title, description, and indexing basics so search engines can find the site. This is not a ranking guarantee.",
     icon: Search,
-    span: "lg:col-span-2",
   },
   {
     title: "Two revision rounds",
     description:
       "Two rounds of design revisions after you review the first custom draft.",
     icon: LayoutTemplate,
-    span: "",
   },
   {
     title: "SSL and domain connection",
     description:
-      "Secure HTTPS plus connecting your domain so the page can go live.",
+      "Secure HTTPS plus connecting your domain so the one-page website can go live.",
     icon: ShieldCheck,
-    span: "",
   },
 ];
 
@@ -77,7 +81,7 @@ const steps = [
   {
     n: "02",
     title: "Review your custom design",
-    text: "We build a streamlined landing page and send you a private preview to review on your phone and computer.",
+    text: "We build a streamlined one-page website and send you a private preview to review on your phone and computer.",
   },
   {
     n: "03",
@@ -87,7 +91,7 @@ const steps = [
   {
     n: "04",
     title: "We connect the domain and launch it",
-    text: "We handle domain connection, SSL, and launch setup so the page is live for customers.",
+    text: "We handle domain connection, SSL, and launch setup so the site is live for customers.",
   },
 ];
 
@@ -105,7 +109,7 @@ const audiences = [
 const faqs = [
   {
     q: "Who owns the domain?",
-    a: "The standard domain is registered in your business name. You own it. We handle registration and launch setup as a one-time service so the site can go live without extra guesswork on your side.",
+    a: "The standard available domain is registered in your business name. You own it. The $129 launch fee covers first-year registration of that standard domain, DNS configuration, SSL, and connecting it to the live one-page website.",
   },
   {
     q: "How do revisions work?",
@@ -113,7 +117,7 @@ const faqs = [
   },
   {
     q: "What does the $59/month cover?",
-    a: "Monthly hosting, maintenance, and support for the live landing page. That typically includes keeping the site online, applying routine updates, and helping with the page as it was built—not a custom development retainer.",
+    a: "Monthly hosting, maintenance, and support for the live one-page website. That typically includes keeping the site online, applying routine updates, and helping with the page as it was built—not a custom development retainer. It requires a 12-month commitment.",
   },
   {
     q: "What if I need additional changes later?",
@@ -135,51 +139,17 @@ function CtaLink({
   return (
     <a
       href="#contact"
-      className={`inline-flex h-12 items-center justify-center rounded-full bg-primary px-6 text-[15px] font-semibold tracking-tight text-primary-foreground shadow-[0_18px_40px_-18px_oklch(0.88_0.155_128)] transition hover:brightness-105 ${className}`}
+      className={`inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full bg-primary px-6 text-[15px] font-semibold tracking-tight text-primary-foreground shadow-[0_18px_40px_-18px_oklch(0.88_0.155_128)] transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 ${className}`}
     >
       {children}
     </a>
   );
 }
 
-function Wordmark({ light = false }: { light?: boolean }) {
-  return (
-    <span className="flex min-w-0 items-baseline text-[13px] font-medium tracking-tight sm:text-sm">
-      <span className={light ? "text-white" : "text-[oklch(0.22_0.05_250)]"}>
-        smallbusiness
-      </span>
-      <span className={light ? "text-primary" : "text-[oklch(0.45_0.1_175)]"}>
-        landingpages.com
-      </span>
-    </span>
-  );
-}
-
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-col bg-[oklch(0.97_0.008_250)] text-foreground">
-      <header className="fixed inset-x-0 top-0 z-40 px-3 pt-2 sm:px-5">
-        <div className="mx-auto flex h-12 max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[oklch(0.18_0.045_250_/_0.72)] px-3 pl-5 text-white shadow-[0_10px_40px_-20px_black] backdrop-blur-xl sm:h-14">
-          <a href="#top" className="min-w-0 truncate">
-            <Wordmark light />
-          </a>
-          <nav className="hidden items-center gap-7 text-[13px] text-white/70 md:flex">
-            <a href="#why" className="transition hover:text-white">
-              Why
-            </a>
-            <a href="#included" className="transition hover:text-white">
-              Included
-            </a>
-            <a href="#pricing" className="transition hover:text-white">
-              Pricing
-            </a>
-            <a href="#faq" className="transition hover:text-white">
-              FAQ
-            </a>
-          </nav>
-          <CtaLink className="h-10 px-4 text-sm">Get My Landing Page</CtaLink>
-        </div>
-      </header>
+    <div className="flex min-h-full flex-col overflow-x-clip bg-[oklch(0.97_0.008_250)] text-foreground">
+      <SiteHeader />
 
       <main id="top">
         <section className="relative overflow-hidden bg-[oklch(0.18_0.05_255)] pt-20 text-white lg:pt-22">
@@ -199,38 +169,37 @@ export default function Home() {
           <div className="relative mx-auto max-w-6xl px-4 pb-8 sm:px-6 lg:pb-10">
             <div className="animate-fade-up max-w-3xl">
               <p className="mb-3 inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
-                Local businesses, still offline
+                Simple websites for local businesses
               </p>
-              <h1 className="text-[2.15rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-4xl lg:text-[2.85rem]">
-                Professional landing pages{" "}
-                <span className="text-primary">without the $2,000+</span>{" "}
-                agency price tag.
+              <h1 className="text-[2rem] font-semibold leading-[1.1] tracking-tight text-balance sm:text-4xl lg:text-[2.85rem]">
+                A professional website for your local business
+                <span className="text-primary">
+                  —without the $2,000 agency bill.
+                </span>
               </h1>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-                We help local businesses get online with a modern, mobile-friendly
-                landing page—without confusing packages, hidden costs or
-                traditional agency overhead.
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+                We design, launch and manage a modern one-page website without
+                confusing packages, hidden costs or traditional agency overhead.
+              </p>
+              <p className="mt-5 inline-flex max-w-full rounded-2xl border border-primary/40 bg-primary/15 px-4 py-3 text-sm font-semibold leading-snug text-primary sm:text-base">
+                $528 upfront + $59/month for 12 months
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <CtaLink>Get My Landing Page</CtaLink>
+                <CtaLink>Get My Website</CtaLink>
                 <a
                   href="#pricing"
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white/85 transition hover:bg-white/10"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white/90 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
                 >
                   See simple pricing
                 </a>
               </div>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/45">
-                Traditional landing-page projects can cost $2,000 or more. This
-                package starts at $399 for design and build.
-              </p>
             </div>
           </div>
 
           <div className="relative border-t border-white/8">
             <div className="mx-auto grid max-w-6xl gap-px sm:grid-cols-3">
               {[
-                ["$399", "One-time design & build"],
+                ["$399", "One-time website design & build"],
                 ["$129", "One-time domain & launch"],
                 ["$59/mo", "Hosting · 12-month term"],
               ].map(([price, label]) => (
@@ -238,59 +207,60 @@ export default function Home() {
                   key={label}
                   className="flex items-baseline justify-between gap-4 px-6 py-4 sm:block sm:px-8 sm:py-5"
                 >
-                  <p className="font-semibold tracking-tight text-3xl text-primary sm:text-4xl">
+                  <p className="text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
                     {price}
                   </p>
-                  <p className="text-sm text-white/55">{label}</p>
+                  <p className="text-sm text-white/70">{label}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+        <SampleSites />
+
         <section id="why" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
             Why we exist
           </p>
-          <h2 className="font-semibold tracking-tight mt-4 max-w-4xl text-4xl leading-[1.12] tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
-            Many great small businesses remain offline because traditional
-            landing-page projects can cost $2,000 or more.
+          <h2 className="mt-4 max-w-4xl text-4xl font-semibold leading-[1.12] tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
+            Great local businesses shouldn’t be invisible online simply because
+            a traditional agency is outside their budget.
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            We exist to remove that barrier with a simple, transparent and
-            affordable model. Professional presence should not require an agency
-            budget, a maze of packages, or features you will never use.
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[oklch(0.38_0.03_250)]">
+            We provide a focused, professional website with clear pricing and a
+            straightforward process.
           </p>
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-4 sm:grid-cols-3">
             {[
               {
-                title: "Single-page focus",
-                text: "We specialize in streamlined landing pages—not oversized multi-page sites you did not ask for.",
+                title: "Done for you",
+                text: "We design, launch, and connect the one-page website so you are not assembling tools yourself.",
+                icon: Handshake,
               },
               {
-                title: "Efficient modern tools",
-                text: "A repeatable stack keeps production time down so the price can stay predictable.",
+                title: "Simple and transparent",
+                text: "Every charge is written down before you inquire. Additional work is quoted and approved first.",
+                icon: ShieldCheck,
               },
               {
-                title: "Repeatable process",
-                text: "The same four steps, every time: intake, design, approval, launch.",
+                title: "Built for local businesses",
+                text: "A focused one-page website for services, hours, and contact—not an enterprise site you did not ask for.",
+                icon: Store,
               },
-              {
-                title: "Direct communication",
-                text: "You work with the people building the page. Clients aren’t paying for unnecessary agency overhead.",
-              },
-            ].map((item, i) => (
+            ].map((item) => (
               <article
                 key={item.title}
                 className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_20px_50px_-32px_oklch(0.22_0.05_250)]"
               >
-                <p className="font-semibold tracking-tight text-2xl text-primary">
-                  0{i + 1}
-                </p>
+                <item.icon
+                  className="size-5 text-[oklch(0.45_0.1_175)]"
+                  aria-hidden
+                />
                 <h3 className="mt-4 text-base font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
                   {item.text}
                 </p>
               </article>
@@ -298,35 +268,38 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="included" className="bg-[oklch(0.18_0.05_255)] py-24 text-white">
+        <section
+          id="included"
+          className="bg-[oklch(0.18_0.05_255)] py-24 text-white"
+        >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
               What’s included
             </p>
-            <h2 className="font-semibold tracking-tight mt-4 max-w-3xl text-4xl leading-[1.12] sm:text-5xl">
+            <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.12] tracking-tight sm:text-5xl">
               Everything a local service business needs to look professional
               online.
             </h2>
-            <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {included.map((item) => (
                 <article
                   key={item.title}
-                  className={`rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm ${item.span}`}
+                  className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
                 >
                   <item.icon className="size-5 text-primary" aria-hidden />
                   <h3 className="mt-5 text-base font-semibold tracking-tight">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  <p className="mt-2 text-sm leading-relaxed text-white/75">
                     {item.description}
                   </p>
                 </article>
               ))}
             </div>
-            <p className="mt-10 max-w-3xl text-sm text-white/50">
-              The standard domain is registered in the customer’s business name.
-              Additional work outside the package is quoted and approved before
-              beginning.
+            <p className="mt-10 max-w-3xl text-sm leading-relaxed text-white/75">
+              The standard available domain is registered in the customer’s
+              business name. Additional work outside the package is quoted and
+              approved before beginning.
             </p>
           </div>
         </section>
@@ -335,68 +308,71 @@ export default function Home() {
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
             Simple pricing
           </p>
-          <h2 className="font-semibold tracking-tight mt-4 text-4xl tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
+          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
             Every charge, written down.
           </h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            No bundled mystery packages. You can see the one-time work and the
-            monthly hosting before you inquire.
+          <p className="mt-4 max-w-2xl text-[oklch(0.38_0.03_250)]">
+            $528 covers the one-time website and launch. Hosting is $59/month
+            with a 12-month commitment.
           </p>
 
           <div className="mt-12 grid gap-4 lg:grid-cols-3">
             <article className="rounded-3xl border border-black/5 bg-white p-8 shadow-[0_24px_60px_-36px_oklch(0.22_0.05_250)]">
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[oklch(0.42_0.03_250)]">
                 One-time
               </p>
-              <p className="font-semibold tracking-tight mt-4 text-5xl text-[oklch(0.22_0.05_250)]">
+              <p className="mt-4 text-5xl font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
                 $399
               </p>
-              <h3 className="mt-4 font-semibold">Landing-page design and build</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Starting price for a custom single-page site, including two
+              <h3 className="mt-4 font-semibold">
+                Website design and build
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
+                Starting price for a custom one-page website, including two
                 revision rounds.
               </p>
             </article>
             <article className="rounded-3xl border border-black/5 bg-white p-8 shadow-[0_24px_60px_-36px_oklch(0.22_0.05_250)]">
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[oklch(0.42_0.03_250)]">
                 One-time
               </p>
-              <p className="font-semibold tracking-tight mt-4 text-5xl text-[oklch(0.22_0.05_250)]">
+              <p className="mt-4 text-5xl font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
                 $129
               </p>
               <h3 className="mt-4 font-semibold">
                 Domain registration and launch setup
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Registered in your business name, connected to the site, and
-                prepared to go live.
+              <p className="mt-2 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
+                Includes first-year registration of a standard available domain,
+                registration in your business name, DNS configuration, SSL, and
+                launch connection.
               </p>
             </article>
             <article className="relative overflow-hidden rounded-3xl bg-[oklch(0.18_0.05_255)] p-8 text-white shadow-[0_24px_60px_-28px_oklch(0.18_0.05_255)]">
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
                 Monthly
               </p>
-              <p className="font-semibold tracking-tight mt-4 text-5xl">
+              <p className="mt-4 text-5xl font-semibold tracking-tight">
                 $59
-                <span className="ml-1 text-xl text-white/55">/month</span>
+                <span className="ml-1 text-xl text-white/70">/month</span>
               </p>
               <h3 className="mt-4 font-semibold">
                 Hosting, maintenance and support
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
-                Keeps the page online and supported. Requires a 12-month
-                commitment.
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
+                Keeps the one-page website online and supported. Requires a
+                12-month commitment.
               </p>
             </article>
           </div>
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-black/5 bg-white">
-            <div className="border-b border-black/5 px-5 py-4 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground sm:px-8">
+            <div className="border-b border-black/5 px-5 py-4 text-[11px] font-medium uppercase tracking-[0.16em] text-[oklch(0.42_0.03_250)] sm:px-8">
               First-year snapshot
             </div>
             <div className="divide-y divide-black/5">
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm sm:px-8">
-                <span>Design and build (one-time)</span>
+                <span>Website design and build (one-time)</span>
                 <span className="font-semibold tabular-nums">$399</span>
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm sm:px-8">
@@ -409,16 +385,16 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-[oklch(0.22_0.05_250)] sm:px-8">
                 <span>Typical first-year total</span>
-                <span className="font-semibold tracking-tight text-2xl tabular-nums">
+                <span className="text-2xl font-semibold tracking-tight tabular-nums">
                   $1,236
                 </span>
               </div>
             </div>
           </div>
-          <p className="mt-4 text-sm text-muted-foreground">
+          <p className="mt-4 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
             First-year total is arithmetic from the published rates, not a
             discount or a guarantee of extra services. Additional work is quoted
-            separately.
+            separately. Hosting is not month-to-month during the 12-month term.
           </p>
         </section>
 
@@ -427,17 +403,19 @@ export default function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
               How it works
             </p>
-            <h2 className="font-semibold tracking-tight mt-4 max-w-3xl text-4xl leading-[1.12] sm:text-5xl">
-              Four steps from conversation to a live page.
+            <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.12] tracking-tight sm:text-5xl">
+              Four steps from conversation to a live one-page website.
             </h2>
             <ol className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 md:grid-cols-2 lg:grid-cols-4">
               {steps.map((step) => (
                 <li key={step.n} className="bg-white/[0.04] p-7">
-                  <p className="font-semibold tracking-tight text-3xl text-primary">
+                  <p className="text-3xl font-semibold tracking-tight text-primary">
                     {step.n}
                   </p>
-                  <h3 className="mt-5 font-semibold tracking-tight">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  <h3 className="mt-5 font-semibold tracking-tight">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/75">
                     {step.text}
                   </p>
                 </li>
@@ -451,14 +429,14 @@ export default function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
               Who it’s for
             </p>
-            <h2 className="font-semibold tracking-tight mt-4 max-w-3xl text-4xl leading-[1.12] text-[oklch(0.22_0.05_250)] sm:text-5xl">
+            <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.12] tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
               Built for local service businesses that need a clear, professional
-              page—not an enterprise website.
+              website—not an enterprise build.
             </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-[oklch(0.38_0.03_250)]">
               If customers still find you by word of mouth, a truck, or a paper
-              card, a focused landing page can make it easier to get called back.
-              We do not promise leads or search rankings.
+              card, a focused one-page website can make it easier to get called
+              back. We do not promise leads or search rankings.
             </p>
           </div>
           <div className="mt-10 overflow-hidden border-y border-black/5 py-5">
@@ -475,12 +453,14 @@ export default function Home() {
           </div>
         </section>
 
+        <FounderSection />
+
         <section id="faq" className="bg-white py-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
               FAQ
             </p>
-            <h2 className="font-semibold tracking-tight mt-4 text-4xl text-[oklch(0.22_0.05_250)]">
+            <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
               Straight answers before you inquire.
             </h2>
             <Accordion className="mt-10 w-full">
@@ -489,7 +469,7 @@ export default function Home() {
                   <AccordionTrigger className="py-4 text-left text-base font-medium">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-[oklch(0.38_0.03_250)]">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -498,7 +478,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="relative overflow-hidden bg-[oklch(0.18_0.05_255)] py-24">
+        <section
+          id="contact"
+          className="relative overflow-hidden bg-[oklch(0.18_0.05_255)] py-24"
+        >
           <div
             aria-hidden
             className="pointer-events-none absolute right-0 top-0 size-[26rem] rounded-full bg-[oklch(0.88_0.155_128_/_0.16)] blur-3xl"
@@ -508,15 +491,15 @@ export default function Home() {
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
                 Get started
               </p>
-              <h2 className="font-semibold tracking-tight mt-4 text-4xl leading-[1.12] sm:text-5xl">
+              <h2 className="mt-4 text-4xl font-semibold leading-[1.12] tracking-tight sm:text-5xl">
                 Tell us about your business.
               </h2>
-              <p className="mt-4 leading-relaxed text-white/65">
+              <p className="mt-4 leading-relaxed text-white/80">
                 Send a short inquiry. We’ll follow up to confirm fit, pricing,
-                and timeline. No fake urgency, and no contract until you agree to
-                the work.
+                and timeline. No fake urgency, and no contract until you agree
+                to the work.
               </p>
-              <ul className="mt-8 space-y-3 text-sm text-white/80">
+              <ul className="mt-8 space-y-3 text-sm text-white/90">
                 {[
                   "Standard domain registered in your business name",
                   "Additional work quoted and approved first",
@@ -528,9 +511,18 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 text-sm text-white/45">
+              <p className="mt-8 text-sm leading-relaxed text-white/80">
                 Hosting starts after launch, at $59/month with a 12-month
                 commitment.
+              </p>
+              <p className="mt-4 text-sm text-white/80">
+                Or email{" "}
+                <a
+                  className="text-primary underline-offset-4 hover:underline"
+                  href={`mailto:${CONTACT_EMAIL}`}
+                >
+                  {CONTACT_EMAIL}
+                </a>
               </p>
             </div>
             <div className="rounded-3xl bg-white p-6 shadow-[0_40px_80px_-32px_black] sm:p-8">
@@ -540,15 +532,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-[oklch(0.14_0.04_255)] py-10 text-white/50">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© {new Date().getFullYear()} smallbusinesslandingpages.com</p>
-          <p>
-            Pricing shown is for the standard single-page package. Traditional
-            agency projects can cost $2,000+.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
