@@ -232,11 +232,9 @@ export default function Home() {
               <p className="mb-6 inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
                 Local businesses, still offline
               </p>
-              <h1 className="font-serif-display text-[2.6rem] leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
+              <h1 className="text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
                 Professional landing pages{" "}
-                <em className="text-primary not-italic sm:italic">
-                  without the $2,000+
-                </em>{" "}
+                <span className="text-primary">without the $2,000+</span>{" "}
                 agency price tag.
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
@@ -248,7 +246,7 @@ export default function Home() {
                 <CtaLink>Get My Landing Page</CtaLink>
                 <a
                   href="#pricing"
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white/85 transition hover:bg-white/8"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white/85 transition hover:bg-white/10"
                 >
                   See simple pricing
                 </a>
@@ -272,7 +270,7 @@ export default function Home() {
                   key={label}
                   className="flex items-baseline justify-between gap-4 px-6 py-6 sm:block sm:px-8"
                 >
-                  <p className="font-serif-display text-3xl text-primary sm:text-4xl">
+                  <p className="font-semibold tracking-tight text-3xl text-primary sm:text-4xl">
                     {price}
                   </p>
                   <p className="text-sm text-white/55">{label}</p>
@@ -286,7 +284,7 @@ export default function Home() {
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
             Why we exist
           </p>
-          <h2 className="font-serif-display mt-4 max-w-4xl text-4xl leading-[1.12] tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
+          <h2 className="font-semibold tracking-tight mt-4 max-w-4xl text-4xl leading-[1.12] tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
             Many great small businesses remain offline because traditional
             landing-page projects can cost $2,000 or more.
           </h2>
@@ -318,7 +316,7 @@ export default function Home() {
                 key={item.title}
                 className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_20px_50px_-32px_oklch(0.22_0.05_250)]"
               >
-                <p className="font-serif-display text-2xl text-primary">
+                <p className="font-semibold tracking-tight text-2xl text-primary">
                   0{i + 1}
                 </p>
                 <h3 className="mt-4 text-base font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
@@ -337,7 +335,7 @@ export default function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
               What’s included
             </p>
-            <h2 className="font-serif-display mt-4 max-w-3xl text-4xl leading-[1.12] sm:text-5xl">
+            <h2 className="font-semibold tracking-tight mt-4 max-w-3xl text-4xl leading-[1.12] sm:text-5xl">
               Everything a local service business needs to look professional
               online.
             </h2>
@@ -369,7 +367,7 @@ export default function Home() {
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
             Simple pricing
           </p>
-          <h2 className="font-serif-display mt-4 text-4xl tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
+          <h2 className="font-semibold tracking-tight mt-4 text-4xl tracking-tight text-[oklch(0.22_0.05_250)] sm:text-5xl">
             Every charge, written down.
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -382,7 +380,7 @@ export default function Home() {
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 One-time
               </p>
-              <p className="font-serif-display mt-4 text-5xl text-[oklch(0.22_0.05_250)]">
+              <p className="font-semibold tracking-tight mt-4 text-5xl text-[oklch(0.22_0.05_250)]">
                 $399
               </p>
               <h3 className="mt-4 font-semibold">Landing-page design and build</h3>
@@ -395,7 +393,7 @@ export default function Home() {
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 One-time
               </p>
-              <p className="font-serif-display mt-4 text-5xl text-[oklch(0.22_0.05_250)]">
+              <p className="font-semibold tracking-tight mt-4 text-5xl text-[oklch(0.22_0.05_250)]">
                 $129
               </p>
               <h3 className="mt-4 font-semibold">
@@ -410,7 +408,7 @@ export default function Home() {
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
                 Monthly
               </p>
-              <p className="font-serif-display mt-4 text-5xl">
+              <p className="font-semibold tracking-tight mt-4 text-5xl">
                 $59
                 <span className="ml-1 text-xl text-white/55">/month</span>
               </p>
@@ -443,7 +441,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-[oklch(0.22_0.05_250)] sm:px-8">
                 <span>Typical first-year total</span>
-                <span className="font-serif-display text-2xl tabular-nums">
+                <span className="font-semibold tracking-tight text-2xl tabular-nums">
                   $1,236
                 </span>
               </div>
@@ -461,13 +459,13 @@ export default function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
               How it works
             </p>
-            <h2 className="font-serif-display mt-4 max-w-3xl text-4xl leading-[1.12] sm:text-5xl">
+            <h2 className="font-semibold tracking-tight mt-4 max-w-3xl text-4xl leading-[1.12] sm:text-5xl">
               Four steps from conversation to a live page.
             </h2>
             <ol className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 md:grid-cols-2 lg:grid-cols-4">
               {steps.map((step) => (
                 <li key={step.n} className="bg-white/[0.04] p-7">
-                  <p className="font-serif-display text-3xl text-primary">
+                  <p className="font-semibold tracking-tight text-3xl text-primary">
                     {step.n}
                   </p>
                   <h3 className="mt-5 font-semibold tracking-tight">{step.title}</h3>
@@ -485,7 +483,7 @@ export default function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
               Who it’s for
             </p>
-            <h2 className="font-serif-display mt-4 max-w-3xl text-4xl leading-[1.12] text-[oklch(0.22_0.05_250)] sm:text-5xl">
+            <h2 className="font-semibold tracking-tight mt-4 max-w-3xl text-4xl leading-[1.12] text-[oklch(0.22_0.05_250)] sm:text-5xl">
               Built for local service businesses that need a clear, professional
               page—not an enterprise website.
             </h2>
@@ -514,7 +512,7 @@ export default function Home() {
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[oklch(0.45_0.08_250)]">
               FAQ
             </p>
-            <h2 className="font-serif-display mt-4 text-4xl text-[oklch(0.22_0.05_250)]">
+            <h2 className="font-semibold tracking-tight mt-4 text-4xl text-[oklch(0.22_0.05_250)]">
               Straight answers before you inquire.
             </h2>
             <Accordion className="mt-10 w-full">
@@ -542,7 +540,7 @@ export default function Home() {
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">
                 Get started
               </p>
-              <h2 className="font-serif-display mt-4 text-4xl leading-[1.12] sm:text-5xl">
+              <h2 className="font-semibold tracking-tight mt-4 text-4xl leading-[1.12] sm:text-5xl">
                 Tell us about your business.
               </h2>
               <p className="mt-4 leading-relaxed text-white/65">

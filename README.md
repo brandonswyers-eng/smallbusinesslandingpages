@@ -24,3 +24,12 @@ The inquiry form posts to `/api/inquiry`, which validates the fields and logs th
 ## Stack
 
 Next.js (App Router), TypeScript, Tailwind CSS, and shadcn/ui.
+
+## Publish (GitHub → Vercel → Squarespace domain)
+
+1. Push this repo to **GitHub**.
+2. Import the GitHub repo in **Vercel** (Framework: Next.js).
+3. In Vercel **Settings → Domains**, add `smallbusinesslandingpages.com` and `www.smallbusinesslandingpages.com`.
+4. In **Squarespace → Domains → DNS**, keep MX/TXT email records. Replace website records with Vercel’s **A** (`@` → usually `76.76.21.21`) and **CNAME** (`www` → the value Vercel shows).
+5. Wait for Vercel to show **Valid Configuration**, then visit the domain.
+
