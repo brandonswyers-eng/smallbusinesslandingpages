@@ -1,31 +1,16 @@
-import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
+import { getSupabasePublishableKey, getSupabaseUrl } from "@/utils/supabase/env";
 import { assertRouteAccess, PlatformError, type PlatformContext } from "./services";
 import { getPlatform, platformConfigured } from "./runtime";
 import type { Profile } from "./types";
 
 export async function createSupabaseServerClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !anon) throw new Error("Supabase public credentials are not set.");
-  const cookieStore = await cookies();
-  return createServerClient(url, anon, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll();
-      },
-      setAll(cookiesToSet) {
-        try {
-          cookiesToSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options),
-          );
-        } catch {
-          // Called from a Server Component; middleware can refresh the session.
-        }
-      },
-    },
-  });
+  if (!getSupabaseUrl() || !getSupabasePublishableKey()) {
+    throw new Error("Supabase public credentials are not set.");
+  }
+  return createClient(await cookies());
 }
 
 export async function getCurrentProfile(): Promise<Profile | null> {

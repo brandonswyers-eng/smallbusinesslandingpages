@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
+import { getSupabasePublishableKey, getSupabaseUrl } from "@/utils/supabase/env";
 import type { AuthPort, FilePort, PlatformContext } from "./services";
 import { createStripePort, stripeConfigured } from "./stripe";
 import { createSupabaseStore } from "./supabase-store";
@@ -7,8 +8,8 @@ import type { Mailer } from "./email";
 
 export function platformConfigured() {
   return Boolean(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
+    getSupabaseUrl() &&
+      getSupabasePublishableKey() &&
       process.env.SUPABASE_SERVICE_ROLE_KEY &&
       stripeConfigured() &&
       process.env.RESEND_API_KEY,
