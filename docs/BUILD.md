@@ -38,7 +38,7 @@ Copy is conservative: no guaranteed leads or rankings, no fabricated testimonial
 - Delivery: **Resend** email to `INQUIRY_TO_EMAIL`, Reply-To set to the customer
 - Fallback contact copy: `hello@smallbusinesslandingpages.com`
 
-Set `RESEND_API_KEY` and `INQUIRY_TO_EMAIL` in Vercel. Mail is sent **from** `send@smallbusinesslandingpages.com`. Verify `smallbusinesslandingpages.com` in Resend and add the DNS records Resend shows (keep existing MX records).
+Set `RESEND_API_KEY` and `INQUIRY_TO_EMAIL` in Vercel. Mail is sent **from** `inquiries@send.smallbusinesslandingpages.com` because Resend is verified on the `send.` subdomain, not the root domain. To use `send@smallbusinesslandingpages.com`, add and verify the root domain `smallbusinesslandingpages.com` in Resend as a separate domain.
 
 ## Stack
 
