@@ -44,7 +44,10 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
       });
 
       if (!response.ok) {
-        throw new Error("Request failed");
+        const payload = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        throw new Error(payload?.error || "Request failed");
       }
 
       setStatus("sent");

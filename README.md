@@ -21,7 +21,7 @@ npm run dev
 
 Open [http://localhost:43127](http://localhost:43127).
 
-The inquiry form posts to `/api/inquiry`, which validates the fields and logs them. Wire that route to email or a CRM before taking real inquiries.
+The inquiry form posts to `/api/inquiry`, which emails submissions via Resend. Copy `.env.example` to `.env.local` for local tests, and set the same variables in Vercel. The From address must be on a domain you verify in Resend.
 
 ## Stack
 

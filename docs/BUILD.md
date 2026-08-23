@@ -30,15 +30,15 @@ Copy is conservative: no guaranteed leads or rankings, no fabricated testimonial
 9. `#contact` — inquiry form
 10. Footer
 
-### Inquiry form (not production-ready)
+### Inquiry form
 
 - Client: `src/components/inquiry-form.tsx`
 - API: `POST /api/inquiry` in `src/app/api/inquiry/route.ts`
 - Required fields: name, business name, email, phone, business type
-- Success path returns `{ ok: true }` and **only `console.log`s** the payload
+- Delivery: **Resend** email to `INQUIRY_TO_EMAIL`, Reply-To set to the customer
 - Fallback contact copy: `hello@smallbusinesslandingpages.com`
 
-**Do not treat inquiries as captured until this route is wired to email or a CRM.**
+Set `RESEND_API_KEY`, `INQUIRY_TO_EMAIL`, and `INQUIRY_FROM_EMAIL` in Vercel (Production). Verify `smallbusinesslandingpages.com` in Resend and add the DNS records Resend shows (keep existing MX records).
 
 ## Stack
 
@@ -70,17 +70,11 @@ Open [http://localhost:43127](http://localhost:43127).
 | Serve production build | `npm start` |
 | Lint | `npm run lint` |
 
-## Production publish (not finished)
+## Production publish
 
-Intended path: **GitHub → Vercel → Squarespace DNS**.
+Path: **GitHub → Vercel → Squarespace DNS**. Custom domain was verified on 22 August 2026.
 
-1. Push `main` to GitHub (already connected; see below).
-2. Import the repo in Vercel (framework: Next.js).
-3. Add `smallbusinesslandingpages.com` and `www.smallbusinesslandingpages.com` in Vercel Domains.
-4. In Squarespace DNS, keep email MX/TXT. Point web traffic with Vercel’s A record on `@` (typically `76.76.21.21`) and CNAME on `www`.
-5. Wait for **Valid Configuration**, then load the domain.
-
-This repo does **not** yet include a checked-in Vercel project (`.vercel` is gitignored). Domain cutover is still a manual step.
+Inquiry email still needs Resend API keys in Vercel and a verified sending domain (see above).
 
 ## GitHub and git (checked 22 Aug 2026)
 
@@ -107,8 +101,7 @@ Recent `main` history (newest first):
 
 ## Known gaps / next build work
 
-- Wire `/api/inquiry` to email or CRM
-- Confirm Vercel project + custom domain DNS
+- Finish Resend domain verification + Vercel env vars (then test a real inquiry)
 - Privacy / terms if collecting real inquiries
 - Favicon / OG image (still default Next public assets)
 - Analytics if desired after launch

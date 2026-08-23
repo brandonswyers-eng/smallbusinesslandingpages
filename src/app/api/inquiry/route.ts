@@ -1,4 +1,13 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
 
 export async function POST(request: Request) {
   try {
@@ -23,14 +32,54 @@ export async function POST(request: Request) {
       );
     }
 
-    // In production, forward this to email or a CRM. Locally we accept and log.
-    console.log("Shopfront inquiry", {
-      name,
-      businessName,
-      email,
-      phone,
-      businessType,
+    const apiKey = process.env.RESEND_API_KEY;
+    const to = process.env.INQUIRY_TO_EMAIL;
+    const from = process.env.INQUIRY_FROM_EMAIL;
+
+    if (!apiKey || !to || !from) {
+      console.error("Inquiry email env vars are missing");
+      return NextResponse.json(
+        { ok: false, error: "Could not process inquiry." },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from,
+      to,
+      replyTo: email,
+      subject: `New landing page inquiry — ${businessName}`,
+      text: [
+        "New inquiry from smallbusinesslandingpages.com",
+        "",
+        `Name: ${name}`,
+        `Business: ${businessName}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Business type: ${businessType}`,
+      ].join("\n"),
+      html: `
+        <h1>New landing page inquiry</h1>
+        <p>From smallbusinesslandingpages.com</p>
+        <table>
+          <tr><td><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
+          <tr><td><strong>Business</strong></td><td>${escapeHtml(businessName)}</td></tr>
+          <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
+          <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone)}</td></tr>
+          <tr><td><strong>Business type</strong></td><td>${escapeHtml(businessType)}</td></tr>
+        </table>
+        <p>Reply to this email to reach the customer.</p>
+      `,
     });
+
+    if (error) {
+      console.error("Resend inquiry error", error);
+      return NextResponse.json(
+        { ok: false, error: "Could not process inquiry." },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({ ok: true });
   } catch {
