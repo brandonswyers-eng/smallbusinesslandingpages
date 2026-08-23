@@ -114,9 +114,9 @@ export function SampleSites() {
           Sample one-page websites for local service businesses.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-[oklch(0.38_0.03_250)]">
-          Concept sites that show the kind of finished one-page websites we
-          design and launch. They are original samples, not live client
-          properties.
+          A look at the kind of finished one-page websites we design and launch
+          for local businesses—specific to the trade, easy for customers to
+          use, and built to go live.
         </p>
       </div>
       <div className="group mt-12 overflow-hidden border-y border-black/5 py-8">
