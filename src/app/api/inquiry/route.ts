@@ -34,9 +34,9 @@ export async function POST(request: Request) {
 
     const apiKey = process.env.RESEND_API_KEY;
     const to = process.env.INQUIRY_TO_EMAIL;
-    const from = process.env.INQUIRY_FROM_EMAIL;
+    const from = "Small Business Landing Pages <send@smallbusinesslandingpages.com>";
 
-    if (!apiKey || !to || !from) {
+    if (!apiKey || !to) {
       console.error("Inquiry email env vars are missing");
       return NextResponse.json(
         { ok: false, error: "Could not process inquiry." },
