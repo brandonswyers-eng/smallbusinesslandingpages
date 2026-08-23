@@ -52,7 +52,7 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
     } catch {
       setStatus("error");
       setError(
-        "We couldn’t send your inquiry just now. Please try again, or email hello@shopfront.page.",
+        "We couldn’t send your inquiry just now. Please try again, or email hello@smallbusinesslandingpages.com.",
       );
     }
   }
@@ -162,7 +162,7 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
         <Button
           type="submit"
           disabled={status === "sending"}
-          className="h-12 w-full rounded-xl px-6 text-base font-semibold shadow-md sm:w-auto"
+          className="h-12 w-full rounded-full px-7 text-base font-semibold text-[oklch(0.22_0.05_250)] shadow-[0_12px_30px_-12px_oklch(0.88_0.155_128)] sm:w-auto"
         >
           {status === "sending" ? "Sending…" : "Get My Landing Page"}
         </Button>

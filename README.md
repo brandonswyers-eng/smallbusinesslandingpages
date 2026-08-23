@@ -1,8 +1,8 @@
-# Shopfront
+# smallbusinesslandingpages.com
 
 A marketing site for an affordable landing-page service aimed at local businesses.
 
-Traditional landing-page projects can cost $2,000 or more. Shopfront publishes a simple offer:
+Traditional landing-page projects can cost $2,000 or more. This offer is:
 
 - **$399** one-time design and build
 - **$129** one-time domain registration and launch setup
@@ -14,7 +14,7 @@ The site does not claim guaranteed leads or search rankings, and it does not use
 
 ```bash
 npm install
-npm run dev -- --port 43127
+npm run dev
 ```
 
 Open [http://localhost:43127](http://localhost:43127).
