@@ -155,37 +155,6 @@ function Wordmark({ light = false }: { light?: boolean }) {
   );
 }
 
-function PhonePreview() {
-  return (
-    <div className="animate-float relative mx-auto w-[280px] sm:w-[300px]">
-      <div className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(circle,oklch(0.88_0.155_128_/_0.22),transparent_62%)] blur-2xl" />
-      <div className="rounded-[2.2rem] border border-white/15 bg-[oklch(0.18_0.04_250)] p-2.5 shadow-[0_40px_80px_-20px_oklch(0.15_0.05_250)]">
-        <div className="overflow-hidden rounded-[1.7rem] bg-white">
-          <div className="flex items-center justify-between bg-[oklch(0.22_0.05_250)] px-4 py-3 text-white">
-            <span className="text-[10px] font-medium tracking-wide">
-              RIVERA AUTO CARE
-            </span>
-            <span className="rounded-full bg-primary px-2 py-0.5 text-[9px] font-semibold text-primary-foreground">
-              Call
-            </span>
-          </div>
-          <div className="space-y-3 p-4">
-            <div className="h-24 rounded-2xl bg-gradient-to-br from-[oklch(0.93_0.03_175)] to-[oklch(0.9_0.02_250)]" />
-            <div className="h-2.5 w-4/5 rounded-full bg-[oklch(0.22_0.05_250)]" />
-            <div className="h-2 w-full rounded-full bg-zinc-200" />
-            <div className="h-2 w-2/3 rounded-full bg-zinc-200" />
-            <div className="grid grid-cols-2 gap-2 pt-1">
-              <div className="h-14 rounded-xl bg-zinc-100" />
-              <div className="h-14 rounded-xl bg-zinc-100" />
-            </div>
-            <div className="h-9 rounded-full bg-primary" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col bg-[oklch(0.97_0.008_250)] text-foreground">
@@ -227,8 +196,8 @@ export default function Home() {
             className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-overlay"
           />
 
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:pb-24">
-            <div className="animate-fade-up">
+          <div className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:pb-24">
+            <div className="animate-fade-up max-w-3xl">
               <p className="mb-6 inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
                 Local businesses, still offline
               </p>
@@ -256,7 +225,6 @@ export default function Home() {
                 package starts at $399 for design and build.
               </p>
             </div>
-            <PhonePreview />
           </div>
 
           <div className="relative border-t border-white/8">
