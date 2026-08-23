@@ -1,5 +1,6 @@
 export const SITE_URL = "https://smallbusinesslandingpages.com";
 export const SITE_NAME = "smallbusinesslandingpages.com";
+export const BRAND_NAME = "Small Business Landing Pages";
 export const CONTACT_EMAIL = "hello@smallbusinesslandingpages.com";
 
 /**

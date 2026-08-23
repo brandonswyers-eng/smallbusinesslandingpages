@@ -12,6 +12,8 @@ The site does not claim guaranteed leads or search rankings, and it does not use
 
 **Where the build stands, how to ship it, and GitHub status:** [docs/BUILD.md](docs/BUILD.md).
 
+**Private client workspace (invitation-only, no public sign-up):** [docs/PLATFORM.md](docs/PLATFORM.md).
+
 ## Run locally
 
 ```bash
