@@ -8,6 +8,16 @@ import { FounderSection } from "@/components/founder-section";
 import { InquiryForm } from "@/components/inquiry-form";
 import { SampleSites } from "@/components/sample-sites";
 import { SiteFooter, SiteHeader } from "@/components/site-frame";
+import {
+  DESIGN_BUILD,
+  DOMAIN_LAUNCH,
+  FIRST_YEAR,
+  HOSTING_MONTHLY,
+  HOSTING_YEAR,
+  TERM_MONTHS,
+  UPFRONT,
+  formatUsd,
+} from "@/lib/pricing";
 import { CONTACT_EMAIL } from "@/lib/site";
 import type { Metadata } from "next";
 import {
@@ -109,23 +119,27 @@ const audiences = [
 const faqs = [
   {
     q: "Who owns the domain?",
-    a: "The standard available domain is registered in your business name. You own it. The $129 launch fee covers first-year registration of that standard domain, DNS configuration, SSL, and connecting it to the live one-page website.",
+    a: `The standard available domain is registered in your business name. You own it. The ${formatUsd(DOMAIN_LAUNCH)} launch fee covers first-year registration of that standard domain, DNS configuration, SSL, and connecting it to the live one-page website.`,
   },
   {
     q: "How do revisions work?",
     a: "The package includes two revision rounds after you review the first custom design. Extra rounds or a change in scope can be quoted separately and only start after you approve them.",
   },
   {
-    q: "What does the $59/month cover?",
-    a: "Monthly hosting, maintenance, and support for the live one-page website. That typically includes keeping the site online, applying routine updates, and helping with the page as it was built—not a custom development retainer. It requires a 12-month commitment.",
+    q: `What does the ${formatUsd(HOSTING_MONTHLY)}/month cover?`,
+    a: `Monthly hosting, maintenance, and support for the live one-page website. That typically includes keeping the site online, applying routine updates, and helping with the page as it was built—not a custom development retainer. It requires a ${TERM_MONTHS}-month commitment.`,
+  },
+  {
+    q: "Do you offer payment plans?",
+    a: `Yes. We offer in-house payment plans so local businesses can spread the one-time website and launch fees (${formatUsd(UPFRONT)} if paid up front). Plans are confirmed in writing before work starts. Hosting remains ${formatUsd(HOSTING_MONTHLY)}/month with a ${TERM_MONTHS}-month commitment and is billed separately from a plan on the one-time fees.`,
   },
   {
     q: "What if I need additional changes later?",
     a: "Work outside the original package—new sections, extra pages, photography, or copy rewrites—is quoted first. We do not begin that work until you approve the quote.",
   },
   {
-    q: "What happens during the 12-month commitment?",
-    a: "Hosting, maintenance, and support is billed at $59 per month with a 12-month commitment. That keeps the site online and supported after launch. If you need to discuss ending or transferring hosting later, we will walk through options; the monthly plan is not month-to-month during the initial term.",
+    q: `What happens during the ${TERM_MONTHS}-month commitment?`,
+    a: `Hosting, maintenance, and support is billed at ${formatUsd(HOSTING_MONTHLY)} per month with a ${TERM_MONTHS}-month commitment. That keeps the site online and supported after launch. If you need to discuss ending or transferring hosting later, we will walk through options; the monthly plan is not month-to-month during the initial term.`,
   },
 ];
 
@@ -152,7 +166,7 @@ export default function Home() {
       <SiteHeader />
 
       <main id="top">
-        <section className="relative overflow-hidden bg-[oklch(0.18_0.05_255)] pt-20 text-white lg:pt-22">
+        <section className="relative flex min-h-dvh flex-col overflow-hidden bg-[oklch(0.18_0.05_255)] pt-20 text-white lg:pt-22">
           <div
             aria-hidden
             className="pointer-events-none absolute -left-24 top-10 size-[28rem] rounded-full bg-[oklch(0.45_0.16_265_/_0.45)] blur-3xl"
@@ -166,7 +180,7 @@ export default function Home() {
             className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-overlay"
           />
 
-          <div className="relative mx-auto max-w-6xl px-4 pb-8 sm:px-6 lg:pb-10">
+          <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-8 sm:px-6 lg:py-10">
             <div className="animate-fade-up max-w-3xl">
               <p className="mb-3 inline-flex rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
                 Simple websites for local businesses
@@ -182,7 +196,8 @@ export default function Home() {
                 confusing packages, hidden costs or traditional agency overhead.
               </p>
               <p className="mt-5 inline-flex max-w-full rounded-2xl border border-primary/40 bg-primary/15 px-4 py-3 text-sm font-semibold leading-snug text-primary sm:text-base">
-                $528 upfront + $59/month for 12 months
+                {formatUsd(UPFRONT)} upfront + {formatUsd(HOSTING_MONTHLY)}
+                /month for {TERM_MONTHS} months
               </p>
               <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <CtaLink>Get My Website</CtaLink>
@@ -193,15 +208,23 @@ export default function Home() {
                   See simple pricing
                 </a>
               </div>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70">
+                In-house payment plans available for the one-time website and
+                launch fees. Ask when you inquire — we’ll confirm terms in
+                writing before work starts.
+              </p>
             </div>
           </div>
 
-          <div className="relative border-t border-white/8">
+          <div className="relative mt-auto border-t border-white/8">
             <div className="mx-auto grid max-w-6xl gap-px sm:grid-cols-3">
               {[
-                ["$399", "One-time website design & build"],
-                ["$129", "One-time domain & launch"],
-                ["$59/mo", "Hosting · 12-month term"],
+                [formatUsd(DESIGN_BUILD), "One-time website design & build"],
+                [formatUsd(DOMAIN_LAUNCH), "One-time domain & launch"],
+                [
+                  `${formatUsd(HOSTING_MONTHLY)}/mo`,
+                  `Hosting · ${TERM_MONTHS}-month term`,
+                ],
               ].map(([price, label]) => (
                 <div
                   key={label}
@@ -312,8 +335,9 @@ export default function Home() {
             Every charge, written down.
           </h2>
           <p className="mt-4 max-w-2xl text-[oklch(0.38_0.03_250)]">
-            $528 covers the one-time website and launch. Hosting is $59/month
-            with a 12-month commitment.
+            {formatUsd(UPFRONT)} covers the one-time website and launch. Hosting
+            is {formatUsd(HOSTING_MONTHLY)}/month with a {TERM_MONTHS}-month
+            commitment.
           </p>
 
           <div className="mt-12 grid gap-4 lg:grid-cols-3">
@@ -322,7 +346,7 @@ export default function Home() {
                 One-time
               </p>
               <p className="mt-4 text-5xl font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
-                $399
+                {formatUsd(DESIGN_BUILD)}
               </p>
               <h3 className="mt-4 font-semibold">
                 Website design and build
@@ -337,7 +361,7 @@ export default function Home() {
                 One-time
               </p>
               <p className="mt-4 text-5xl font-semibold tracking-tight text-[oklch(0.22_0.05_250)]">
-                $129
+                {formatUsd(DOMAIN_LAUNCH)}
               </p>
               <h3 className="mt-4 font-semibold">
                 Domain registration and launch setup
@@ -353,7 +377,7 @@ export default function Home() {
                 Monthly
               </p>
               <p className="mt-4 text-5xl font-semibold tracking-tight">
-                $59
+                {formatUsd(HOSTING_MONTHLY)}
                 <span className="ml-1 text-xl text-white/70">/month</span>
               </p>
               <h3 className="mt-4 font-semibold">
@@ -373,20 +397,29 @@ export default function Home() {
             <div className="divide-y divide-black/5">
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm sm:px-8">
                 <span>Website design and build (one-time)</span>
-                <span className="font-semibold tabular-nums">$399</span>
+                <span className="font-semibold tabular-nums">
+                  {formatUsd(DESIGN_BUILD)}
+                </span>
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm sm:px-8">
                 <span>Domain registration and launch (one-time)</span>
-                <span className="font-semibold tabular-nums">$129</span>
+                <span className="font-semibold tabular-nums">
+                  {formatUsd(DOMAIN_LAUNCH)}
+                </span>
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm sm:px-8">
-                <span>Hosting for 12 months ($59 × 12)</span>
-                <span className="font-semibold tabular-nums">$708</span>
+                <span>
+                  Hosting for {TERM_MONTHS} months ({formatUsd(HOSTING_MONTHLY)}{" "}
+                  × {TERM_MONTHS})
+                </span>
+                <span className="font-semibold tabular-nums">
+                  {formatUsd(HOSTING_YEAR)}
+                </span>
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-[oklch(0.22_0.05_250)] sm:px-8">
                 <span>Typical first-year total</span>
                 <span className="text-2xl font-semibold tracking-tight tabular-nums">
-                  $1,236
+                  {formatUsd(FIRST_YEAR)}
                 </span>
               </div>
             </div>
@@ -394,7 +427,15 @@ export default function Home() {
           <p className="mt-4 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
             First-year total is arithmetic from the published rates, not a
             discount or a guarantee of extra services. Additional work is quoted
-            separately. Hosting is not month-to-month during the 12-month term.
+            separately. Hosting is not month-to-month during the {TERM_MONTHS}
+            -month term.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]">
+            Need to spread out the {formatUsd(UPFRONT)} one-time fees? We offer
+            in-house payment plans. Mention it when you inquire and we’ll
+            confirm the schedule in writing before work begins. Monthly hosting
+            stays {formatUsd(HOSTING_MONTHLY)}/month with a {TERM_MONTHS}-month
+            commitment.
           </p>
         </section>
 
@@ -502,6 +543,7 @@ export default function Home() {
               <ul className="mt-8 space-y-3 text-sm text-white/90">
                 {[
                   "Standard domain registered in your business name",
+                  "In-house payment plans on the one-time website and launch fees",
                   "Additional work quoted and approved first",
                   "No claim of guaranteed leads or Google rankings",
                 ].map((line) => (
@@ -512,8 +554,8 @@ export default function Home() {
                 ))}
               </ul>
               <p className="mt-8 text-sm leading-relaxed text-white/80">
-                Hosting starts after launch, at $59/month with a 12-month
-                commitment.
+                Hosting starts after launch, at {formatUsd(HOSTING_MONTHLY)}
+                /month with a {TERM_MONTHS}-month commitment.
               </p>
               <p className="mt-4 text-sm text-white/80">
                 Or email{" "}

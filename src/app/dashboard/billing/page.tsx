@@ -24,7 +24,7 @@ export default async function DashboardBillingPage() {
           </div>
           <div>
             <dt className="text-[oklch(0.5_0.02_250)]">Monthly hosting</dt>
-            <dd>$59</dd>
+            <dd>$69</dd>
           </div>
           <div>
             <dt className="text-[oklch(0.5_0.02_250)]">Hosting status</dt>

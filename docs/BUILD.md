@@ -10,10 +10,10 @@ Public offer on the page:
 
 | Charge | Amount | Notes |
 | --- | --- | --- |
-| Design and build | $399 one-time | Custom single page, two revision rounds |
-| Domain and launch setup | $129 one-time | Domain registered in the customer’s business name |
-| Hosting, maintenance, support | $59/month | 12-month commitment |
-| Typical first-year total | $1,236 | $399 + $129 + ($59 × 12) |
+| Design and build | $499 one-time | Custom single page, two revision rounds |
+| Domain and launch setup | $229 one-time | Domain registered in the customer’s business name |
+| Hosting, maintenance, support | $69/month | 12-month commitment |
+| Typical first-year total | $1,556 | $499 + $229 + ($69 × 12) |
 
 Copy is conservative: no guaranteed leads or rankings, no fabricated testimonials. Inquiry is a conversation, not a contract.
 

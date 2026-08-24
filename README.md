@@ -4,9 +4,10 @@ A marketing site for an affordable landing-page service aimed at local businesse
 
 Traditional landing-page projects can cost $2,000 or more. This offer is:
 
-- **$399** one-time design and build
-- **$129** one-time domain registration and launch setup
-- **$59/month** hosting, maintenance, and support with a **12-month commitment**
+- **$499** one-time design and build
+- **$229** one-time domain registration and launch setup
+- **$69/month** hosting, maintenance, and support with a **12-month commitment**
+- In-house payment plans available for the one-time website and launch fees
 
 The site does not claim guaranteed leads or search rankings, and it does not use fabricated testimonials.
 

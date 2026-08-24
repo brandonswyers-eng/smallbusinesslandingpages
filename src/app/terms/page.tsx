@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalDocument title="Terms of Service" updated="23 August 2026">
+    <LegalDocument title="Terms of Service" updated="24 August 2026">
       <p>
         These Terms of Service (“Terms”) govern your use of {SITE_NAME} at{" "}
         <a href={SITE_URL}>{SITE_URL}</a> and the one-page website service
@@ -35,17 +35,17 @@ export default function TermsPage() {
       <p>The standard package published on the site is:</p>
       <ul>
         <li>
-          <strong>$399 one-time</strong> — website design and build, including
+          <strong>$499 one-time</strong> — website design and build, including
           two revision rounds after you review the first custom design.
         </li>
         <li>
-          <strong>$129 one-time</strong> — domain registration and launch setup
+          <strong>$229 one-time</strong> — domain registration and launch setup
           for a standard available domain: first-year registration in the
           customer’s business name, DNS, SSL, and connecting the domain to the
           live page.
         </li>
         <li>
-          <strong>$59 per month</strong> — hosting, maintenance, and support,
+          <strong>$69 per month</strong> — hosting, maintenance, and support,
           with a <strong>12-month commitment</strong> that starts when the site
           is launched (or on another start date we confirm in writing).
         </li>
@@ -55,6 +55,13 @@ export default function TermsPage() {
         for photography, extra pages, custom software, advertising, or ongoing
         copywriting. Work outside the package is quoted separately and starts
         only after you approve the quote.
+      </p>
+      <p>
+        We may offer an in-house payment plan for the one-time website and
+        launch fees. A plan does not change the published package prices or the
+        12-month hosting commitment unless the written confirmation says
+        otherwise. Schedule, any down payment, and due dates are confirmed in
+        writing before work begins. Hosting remains billed monthly.
       </p>
 
       <h2>2. Inquiries are not orders</h2>
@@ -96,11 +103,11 @@ export default function TermsPage() {
         </li>
         <li>
           SSL and connecting a standard available domain registered in your
-          business name, as described in the $129 launch fee.
+          business name, as described in the $229 launch fee.
         </li>
         <li>
           After launch, hosting, routine maintenance, and support for the page
-          as built, under the $59/month plan.
+          as built, under the $69/month plan.
         </li>
       </ul>
       <h3>Not included / not promised</h3>
@@ -125,7 +132,7 @@ export default function TermsPage() {
           Premium, trademarked, or otherwise restricted domain names. “Standard
           available domain” means an ordinary domain that the registrar can
           register in the ordinary course, at ordinary first-year cost covered
-          by the $129 fee. Unusual strings, aftermarket names, or extra
+          by the $229 fee. Unusual strings, aftermarket names, or extra
           registry fees are quoted separately or declined.
         </li>
       </ul>
@@ -177,7 +184,7 @@ export default function TermsPage() {
       <h2>7. Domains</h2>
       <p>
         The standard available domain is registered in your business name. You
-        own that domain registration. The $129 fee covers first-year
+        own that domain registration. The $229 fee covers first-year
         registration of that standard domain plus DNS, SSL, and launch
         connection.
       </p>
@@ -186,7 +193,7 @@ export default function TermsPage() {
         outside our full control. We will tell you if a requested name cannot
         be registered as a standard domain. After the first year, domain
         renewal is billed by the registrar (or as we otherwise confirm in
-        writing); it is not included in the $59 monthly hosting fee unless we
+        writing); it is not included in the $69 monthly hosting fee unless we
         expressly say so.
       </p>
       <p>
@@ -198,7 +205,7 @@ export default function TermsPage() {
 
       <h2>8. Hosting, maintenance, and the 12-month term</h2>
       <p>
-        Monthly hosting, maintenance, and support is $59 per month with a
+        Monthly hosting, maintenance, and support is $69 per month with a
         12-month commitment. During that term the plan is not month-to-month.
         It typically covers keeping the one-page site online, applying routine
         updates, and helping with the page as built—not a custom development
@@ -299,7 +306,7 @@ export default function TermsPage() {
 
       <h2>15. Refunds</h2>
       <p>
-        Because design work begins after written confirmation, the $399
+        Because design work begins after written confirmation, the $499
         design/build fee is not a casual deposit you can reverse after we have
         started custom design, except as required by law or as we agree in
         writing. If we have not started design and you cancel immediately after

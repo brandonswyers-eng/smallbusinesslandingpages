@@ -112,7 +112,7 @@ export default async function AdminProjectPage({
         ) : null}
       </Panel>
 
-      <Panel title="Private payment link" description="Creates a Stripe Checkout page. First charge is $587, then $59 each month.">
+      <Panel title="Private payment link" description="Creates a Stripe Checkout page. First charge is $797, then $69 each month.">
         <form action={createPaymentLinkAction} className="grid gap-4">
           <input type="hidden" name="projectId" value={project.id} />
           <Textarea name="overrideReason" placeholder="Needed only if the agreement is not marked signed" />

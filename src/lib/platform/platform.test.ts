@@ -162,7 +162,7 @@ describe("invitation-only platform", () => {
         object: {
           id: "in_fail",
           customer: "cus_test_123",
-          amount_due: 5900,
+          amount_due: 6900,
           currency: "usd",
           metadata: { client_id: profile.id, project_id: project.id },
         },

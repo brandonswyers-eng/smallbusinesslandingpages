@@ -18,6 +18,7 @@ export async function POST(request: Request) {
     const email = String(body.email ?? "").trim();
     const phone = String(body.phone ?? "").trim();
     const businessType = String(body.businessType ?? "").trim();
+    const paymentPlan = Boolean(body.paymentPlan);
     const website = String(body.website ?? "").trim();
     const startedAt = Number(body.startedAt);
 
@@ -77,6 +78,7 @@ export async function POST(request: Request) {
         `Email: ${email}`,
         `Phone: ${phone}`,
         `Business type: ${businessType}`,
+        `Payment plan interest: ${paymentPlan ? "Yes" : "No"}`,
       ].join("\n"),
       html: `
         <h1>New landing page inquiry</h1>
@@ -87,6 +89,7 @@ export async function POST(request: Request) {
           <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
           <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone)}</td></tr>
           <tr><td><strong>Business type</strong></td><td>${escapeHtml(businessType)}</td></tr>
+          <tr><td><strong>Payment plan interest</strong></td><td>${paymentPlan ? "Yes" : "No"}</td></tr>
         </table>
         <p>Reply to this email to reach the customer.</p>
       `,

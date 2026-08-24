@@ -217,11 +217,12 @@ export type AuditEvent = {
   createdAt: string;
 };
 
-export const HOSTING_MONTHLY_CENTS = 5900;
-export const LANDING_PAGE_CENTS = 39900;
-export const DOMAIN_SETUP_CENTS = 12900;
-export const INITIAL_CHARGE_CENTS =
-  LANDING_PAGE_CENTS + DOMAIN_SETUP_CENTS + HOSTING_MONTHLY_CENTS;
+export {
+  HOSTING_MONTHLY_CENTS,
+  LANDING_PAGE_CENTS,
+  DOMAIN_SETUP_CENTS,
+  INITIAL_CHARGE_CENTS,
+} from "@/lib/pricing";
 export const MINIMUM_TERM_MONTHS = 12;
 export const ACTIVATION_TOKEN_HOURS = 48;
 export const RESET_TOKEN_HOURS = 2;

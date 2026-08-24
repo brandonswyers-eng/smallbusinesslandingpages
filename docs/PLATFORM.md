@@ -7,7 +7,7 @@ This app still has no public sign-up and no shopping cart. Staff create the pros
 - Invitation-only login at `/login`, activation at `/activate`, password reset at `/forgot-password`
 - Staff workspace at `/admin`
 - Client workspace at `/dashboard`
-- Stripe Checkout for $399 + $129 + $59/month (first charge $587)
+- Stripe Checkout for $499 + $229 + $69/month (first charge $797)
 - Stripe webhook at `/api/stripe/webhook`
 - Read-only billing status in the client dashboard
 - Support requests instead of chat
@@ -20,9 +20,9 @@ This app still has no public sign-up and no shopping cart. Staff create the pros
 4. Create your staff user in Authentication, then insert a matching `profiles` row with `role = 'admin'` and `account_status = 'active'`.
 5. Create a private Storage bucket named `client-uploads`.
 6. In Stripe test mode, create:
-   - one-time $399 landing page price
-   - one-time $129 domain setup price
-   - recurring $59 / month hosting price
+   - one-time $499 landing page price
+   - one-time $229 domain setup price
+   - recurring $69 / month hosting price
 7. Add a webhook for `https://YOUR_DOMAIN/api/stripe/webhook` with:
    - `checkout.session.completed`
    - `checkout.session.async_payment_succeeded`

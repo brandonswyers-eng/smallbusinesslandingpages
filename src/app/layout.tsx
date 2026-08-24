@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "smallbusinesslandingpages.com — One-page websites from $399";
+const title = "smallbusinesslandingpages.com — One-page websites from $499";
 const description =
-  "Simple one-page websites for local businesses. Design and build from $399, plus domain launch setup. No confusing packages or ranking guarantees.";
+  "Simple one-page websites for local businesses. Design and build from $499, plus domain launch setup. In-house payment plans available. No confusing packages or ranking guarantees.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "smallbusinesslandingpages.com — professional websites from $399",
+        alt: "smallbusinesslandingpages.com — professional websites from $499",
       },
     ],
   },

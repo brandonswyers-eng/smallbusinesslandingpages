@@ -47,6 +47,7 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           email: data.get("email"),
           phone: data.get("phone"),
           businessType: data.get("businessType"),
+          paymentPlan: data.get("paymentPlan") === "yes",
           website: data.get("website"),
           startedAt: startedAt.current,
         }),
@@ -176,6 +177,20 @@ export function InquiryForm({ compact = false }: { compact?: boolean }) {
           ))}
         </select>
       </div>
+      <label
+        className={`${compact ? "" : "sm:col-span-2"} flex items-start gap-3 text-sm leading-relaxed text-[oklch(0.38_0.03_250)]`}
+      >
+        <input
+          type="checkbox"
+          name="paymentPlan"
+          value="yes"
+          className="mt-1 size-4 shrink-0 rounded border-input"
+        />
+        <span>
+          I’m interested in an in-house payment plan for the one-time website
+          and launch fees.
+        </span>
+      </label>
       {error ? (
         <p className="text-sm text-destructive sm:col-span-2" role="alert">
           {error}
